@@ -1,3 +1,4 @@
+require 'pry'
 # Write your code below game_hash
 def game_hash
   {
@@ -127,3 +128,47 @@ def game_hash
 end
 
 # Write code here
+def game_hash
+end
+
+#helper methods
+
+
+#returns array of all player hashes
+
+def all_players
+    game_hash[:home][:players] + game_hash[:away][:players]
+end
+
+#returns only one player hash
+def get_player_by_name(player_name)
+  all_players.find do |player|
+    player[:player_name] == player_name
+  end
+end
+
+#returns only one team has
+def get_team_by_name(team_name)
+    #look for key [:home] [:away] > [:team_name] 
+    #game_hash.home.team_name
+
+  team_info = game_hash.find do |key, value|
+    value[:team_name] == team_name
+end
+  team_info[1]
+end
+
+#          end helpermthods
+
+#all the other methods
+
+#number of points scored by each player
+
+def num_points_scored(player_name)
+    get_player_by_name(player_name) [:points]
+end
+
+#shoe size of individual player
+def shoe_size(player_name)
+  get_player_by_name(player_name)[:shoe]
+end
